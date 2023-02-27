@@ -25,10 +25,6 @@ const getBorder = (variant) => {
   return variant === "contained" ? "none" : "1px solid #8a2b06"
 }
 
-const getColor = (variant) => {
-  return variant === "contained" ? "#fff" : " #8a2b06"
-}
-
 const getBorderRadius = (borderStyle) => {
   return borderStyle === "rounded" ? "20px" : " 6px"
 }

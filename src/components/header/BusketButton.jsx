@@ -1,7 +1,8 @@
-import React from "react"
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
-import styled from "styled-components"
-import Buttons from "../UI/Button"
+import React from 'react'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import styled from 'styled-components'
+import Buttons from '../UI/Button'
+import { getTheme } from '../../lib/constants/theme'
 
 const BusketButton = ({ count, ...props }) => {
   return (
@@ -20,7 +21,7 @@ const StyledTitle = styled.span`
 `
 
 const StyledCounter = styled.span`
-  background: #8a2b06;
+  background: ${getTheme().palette.primary.light};
   border-radius: 1.875rem;
   color: #fff;
   font-weight: 700;

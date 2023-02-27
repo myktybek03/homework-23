@@ -1,15 +1,15 @@
-import { useCallback } from "react"
-import { Box, Modal } from "@mui/material"
-import { useDispatch, useSelector } from "react-redux"
+import { useCallback } from 'react'
+import { Box, Modal, styled } from '@mui/material'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   deleteBasketItem,
   submitOrder,
   updateBasketItem,
-} from "../../store/basket/basketSlice"
-import { uiActions } from "../../store/ui/uiSlice"
-import BasketItem from "./BasketItem"
-import TotalAmount from "./TotalAmount"
-import styled from "styled-components"
+} from '../../store/basket/basketSlice'
+import { uiActions } from '../../store/ui/uiSlice'
+import BasketItem from './BasketItem'
+import TotalAmount from './TotalAmount'
+import styledComponent from 'styled-components'
 
 const Basket = ({ onClose, open }) => {
   const dispatch = useDispatch()
@@ -41,16 +41,16 @@ const Basket = ({ onClose, open }) => {
       dispatch(
         uiActions.showSnackBar({
           isOpen: true,
-          severity: "success",
-          message: "Order completed successfully!",
+          severity: 'success',
+          message: 'Order completed successfully!',
         })
       )
     } catch (error) {
       dispatch(
         uiActions.showSnackBar({
           isOpen: true,
-          severity: "error",
-          message: "Failed, Try again later!",
+          severity: 'error',
+          message: 'Failed, Try again later!',
         })
       )
     } finally {
@@ -94,37 +94,35 @@ const Basket = ({ onClose, open }) => {
 }
 
 export default Basket
-const Content = styled.div`
+const Content = styledComponent.div`
   width: 100%;
   height: 100%;
   padding: 0 1rem 1.5rem 1rem;
 `
-const FixedHeightContainer = styled.div`
+const FixedHeightContainer = styledComponent.div`
   max-height: 228px;
   overflow-y: scroll;
 `
-const ModalStyle = styled(Box)`
-  position: fixed;
-  top: 20vh;
-  left: 5%;
-  width: 90%;
-  background-color: white;
-  padding: 1rem;
-  border-radius: 14px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  z-index: 30;
-  animation: 300ms ease-out forwards;
-  width: 40rem;
-  left: calc(50% - 20rem);
+const ModalStyle = styled(Box)(({ theme }) => ({
+  position: 'fixed',
+  top: '20vh',
+  backgroundColor: theme.palette.primary.main,
+  padding: '1rem',
+  borderRadius: '14px',
+  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.25)',
+  zIndex: '30',
+  animation: '300ms ease-out forwards',
+  width: '40rem',
+  left: 'calc(50% - 20rem)',
 
-  @keyframes slide-down {
-    from {
-      opacity: 0;
-      transform: translateY(-3rem);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-`
+  '@keyframes slide-down': {
+    from: {
+      opacity: '0',
+      transform: 'translateY(-3rem)',
+    },
+    to: {
+      opacity: '1',
+      transform: 'translateY(0)',
+    },
+  },
+}))
